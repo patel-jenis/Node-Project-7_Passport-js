@@ -1,0 +1,152 @@
+<%- include('partials/authHeader') %>
+
+    <body>
+        <%- include('partials/aside') %>
+
+            <!-- <a href="/auth/logOut">logOut</a> -->
+            <main class="main-wrapper">
+                <!-- ========== header start ========== -->
+                <header class="header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-6">
+                                <div class="header-left d-flex align-items-center">
+                                    <div class="menu-toggle-btn mr-15">
+                                        <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                                            <i class="lni lni-chevron-left me-2"></i> Menu
+                                        </button>
+                                    </div>
+                                    <div class="header-search d-none d-md-flex">
+                                        <form action="#">
+                                            <input type="text" placeholder="Search..." />
+                                            <button><i class="lni lni-search-alt"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-6">
+                                <div class="header-right d-flex justify-content-end align-items-center">
+
+                                    <!-- Profile -->
+                                    <!-- Profile (Hide on Mobile) -->
+                                    <div class="profile-box me-4 d-none d-md-block">
+                                        <div class="profile-info">
+                                            <div class="info d-flex align-items-center">
+                                                <div class="image me-2">
+                                                    <img src="../assets/images/profile/profile-image.png" alt="profile">
+                                                </div>
+                                                <div>
+                                                    <h6 class="fw-600 mb-0">Adam Joe</h6>
+                                                    <small class="text-muted">Admin</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Logout Button -->
+                                    <a href="/auth/logOut"
+                                        class="btn btn-outline-danger rounded-pill px-4 py-2 d-flex align-items-center gap-2">
+                                        <i class="lni lni-exit"></i>
+                                        <span>Logout</span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- ========== header end ========== -->
+
+                <!-- ========== Add Blog Section Start ========== -->
+                <section class="section mt-5">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="card-style">
+
+                                    <div class="title d-flex flex-wrap justify-content-between align-items-center mb-4">
+                                        <div>
+                                            <h4>Add New Blog</h4>
+                                            <p class="text-sm text-medium">
+                                                Create and publish a new blog post.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <form action="/blogs/addBlog" method="POST" enctype="multipart/form-data">
+
+                                        <div class="row">
+
+                                            <!-- Blog Title -->
+                                            <div class="col-md-6">
+                                                <div class="input-style-1">
+                                                    <label>Blog Title</label>
+                                                    <input type="text" name="title" placeholder="Enter blog title"
+                                                        required>
+                                                </div>
+                                            </div>
+
+                                            <!-- Category -->
+                                            <div class="col-md-6">
+                                                <div class="input-style-1">
+                                                    <label>Category</label>
+                                                    <input type="text" name="category"
+                                                        placeholder="Technology, Business, etc." required>
+                                                </div>
+                                            </div>
+
+                                            <!-- Blog Author -->
+                                            <div class="col-md-6">
+                                                <div class="input-style-1">
+                                                    <label>Author Name</label>
+                                                    <input type="text" name="author" placeholder="Enter author name"
+                                                        required>
+                                                </div>
+                                            </div>
+
+                                            <!-- Featured Image -->
+                                            <div class="col-md-6">
+                                                <div class="input-style-1">
+                                                    <label>Featured Image</label>
+                                                    <input type="file" name="image" class="form-control"
+                                                        accept="image/*">
+                                                </div>
+                                            </div>
+
+                                            <!-- Blog Content -->
+                                            <div class="col-md-12">
+                                                <div class="input-style-1">
+                                                    <label>Blog Content</label>
+                                                    <textarea name="content" rows="8"
+                                                        placeholder="Write your blog content here..."
+                                                        required></textarea>
+                                                </div>
+                                            </div>
+
+                                            <!-- Submit Button -->
+                                            <div class="col-md-12">
+                                                <button type="submit" class="main-btn primary-btn btn-hover w-100">
+                                                    Publish Blog
+                                                </button>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- ========== Add Blog Section End ========== -->
+
+            </main>
+    </body>
+
+
+    </html>

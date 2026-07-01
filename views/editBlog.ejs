@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Admin Panel</title>
+
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/lineicons.css" /> -->
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+<body>
+    <%- include('partials/aside') %>
+
+        <main class="main-wrapper">
+            <!-- ========== header start ========== -->
+            <header class="header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-6">
+                            <div class="header-left d-flex align-items-center">
+                                <div class="menu-toggle-btn mr-15">
+                                    <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                                        <i class="lni lni-chevron-left me-2"></i> Menu
+                                    </button>
+                                </div>
+                                <div class="header-search d-none d-md-flex">
+                                    <form action="#">
+                                        <input type="text" placeholder="Search..." />
+                                        <button><i class="lni lni-search-alt"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-6">
+                            <div class="header-right d-flex justify-content-end align-items-center">
+
+                                <!-- Profile -->
+                                <!-- Profile (Hide on Mobile) -->
+                                <div class="profile-box me-4 d-none d-md-block">
+                                    <div class="profile-info">
+                                        <div class="info d-flex align-items-center">
+                                            <div class="image me-2">
+                                                <img src="/assets/images/profile/profile-image.png" alt="profile">
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-600 mb-0">Adam Joe</h6>
+                                                <small class="text-muted">Admin</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Logout Button -->
+                                <a href="/auth/logOut"
+                                    class="btn btn-outline-danger rounded-pill px-4 py-2 d-flex align-items-center gap-2">
+                                    <i class="lni lni-exit"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- ========== header end ========== -->
+
+            <!-- ========== Add Blog Section Start ========== -->
+            <section class="section mt-5">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="card-style">
+
+                                <div class="title d-flex flex-wrap justify-content-between align-items-center mb-4">
+                                    <div>
+                                        <h4>Edit Blog</h4>
+                                        <p class="text-sm text-medium">
+                                            Update your blog details, replace the featured image if needed, and save the
+                                            changes.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <form action="/blogs/updateBlog" method="POST"
+                                    enctype="multipart/form-data">
+
+                                    <input type="text" name="id" value="<%= blog.id %>" hidden>
+                                    <div class="row">
+
+                                        <!-- Blog Title -->
+                                        <div class="col-md-6">
+                                            <div class="input-style-1">
+                                                <label>Blog Title</label>
+                                                <input type="text" name="title" value="<%= blog.title %>"
+                                                    placeholder="Enter blog title" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Category -->
+                                        <div class="col-md-6">
+                                            <div class="input-style-1">
+                                                <label>Category</label>
+                                                <input type="text" name="category" value="<%= blog.category %>"
+                                                    placeholder="Technology, Business, etc." required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Author -->
+                                        <div class="col-md-6">
+                                            <div class="input-style-1">
+                                                <label>Author Name</label>
+                                                <input type="text" name="author" value="<%= blog.author %>"
+                                                    placeholder="Enter author name" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Select New Image -->
+                                        <div class="col-md-6">
+                                            <div class="input-style-1">
+                                                <label>Select New Image</label>
+                                                <input type="file" name="image" class="form-control" accept="image/*">
+
+                                                <small class="text-muted d-block mt-2">
+                                                    Leave this field empty to keep the current image.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <!-- Current Image -->
+                                        <div class="col-md-12">
+                                            <div class="input-style-1">
+                                                <label>Current Featured Image</label>
+
+                                                <div class="border rounded-3 p-3 text-center">
+                                                    <img src="/<%= blog.image %>" alt="Blog Image"
+                                                        class="img-fluid rounded"
+                                                        style="width:100%; max-height:320px; object-fit:cover;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Blog Description -->
+                                        <div class="col-md-12">
+                                            <div class="input-style-1">
+                                                <label>Blog Description</label>
+                                                <textarea name="content" rows="10"
+                                                    placeholder="Write blog content here..."
+                                                    required><%= blog.content %></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Buttons -->
+                                        <div class="col-md-12">
+                                            <div class="d-flex gap-3">
+
+                                                <button type="submit" class="main-btn primary-btn btn-hover">
+                                                    <i class="lni lni-save me-2"></i>
+                                                    Update Blog
+                                                </button>
+
+                                                <a href="/blogs/view-Blogs" class="main-btn light-btn btn-hover">
+                                                    Cancel
+                                                </a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- ========== Add Blog Section End ========== -->
+
+        </main>
+</body>
+
+
+</html>
