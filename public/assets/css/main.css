@@ -6695,3 +6695,24 @@ only screen and (min-width: 768px) and (max-width: 991px),
   display: none;
   /* Chrome, Safari */
 }
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  min-width: 850px;
+  white-space: nowrap;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.action-btns {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
