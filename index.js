@@ -23,27 +23,6 @@ server.use(passport.session());
 
 server.use("/", routes);
 
-// server.get("/set-cookie", (req, res) => {
-
-//     res.cookie("user", "123456789", {
-//         maxAge: 24 * 60 * 60 * 1000, // 1 day
-//         httpOnly: true,              // can't access from browser JS
-//     });
-//     res.send("Cookie Set...");
-// })
-// server.get("/get-cookie", (req, res) => {
-
-//     let cookie = req.cookies.user;
-
-//     console.log("cookie: ", cookie);
-//     res.send("Cookie Get...");
-// })
-// server.get("/remove-cookie", (req, res) => {
-
-//     res.clearCookie("user");
-
-//     res.send("Cookie Deleted...");
-// })
 
 server.listen(port, (err) => {
     if (!err) {
